@@ -372,59 +372,28 @@
   .btn-dark:hover { transform: translateY(-3px); background: #0a1a10; }
 
   /* ── CONTACTS ────────────────────────────────────────── */
-  .contacts {
-    padding: 5rem 8vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  @media (max-width: 700px) { .contacts { grid-template-columns: 1fr; } }
-
-  .contact-info h3 {
-    font-family: 'Unbounded', 'Impact', 'Arial Black', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 900;
-    margin-bottom: 1.2rem;
-  }
-  .contact-info p { line-height: 1.8; color: rgba(253,246,236,.7); margin-bottom: 1.8rem; }
-
-  .contact-links { display: flex; flex-direction: column; gap: .75rem; }
-  .contact-link {
-    display: flex; align-items: center; gap: .8rem;
-    color: var(--lime);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: .95rem;
-    transition: opacity .2s;
-  }
-  .contact-link:hover { opacity: .7; }
-  .contact-link .cl-icon { font-size: 1.2rem; }
-
-  /* form */
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-
-  .contact-form input,
-  .contact-form textarea,
-  .contact-form select {
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
     background: rgba(255,255,255,.05);
-    border: 1.5px solid rgba(255,255,255,.12);
-    border-radius: 12px;
-    padding: .9rem 1.2rem;
+    border: 1.5px solid rgba(255,255,255,.1);
+    border-radius: 18px;
+    padding: 1.4rem 1.8rem;
+    text-decoration: none;
     color: var(--cream);
-    font-family: 'Nunito', sans-serif;
-    font-size: .95rem;
-    outline: none;
-    transition: border-color .2s;
-    resize: none;
+    transition: transform .25s, border-color .25s, background .25s;
   }
-  .contact-form input::placeholder,
-  .contact-form textarea::placeholder { color: rgba(253,246,236,.35); }
-  .contact-form input:focus,
-  .contact-form textarea:focus,
-  .contact-form select:focus { border-color: var(--lime); }
-  .contact-form select option { background: #1a3a2a; }
-  .contact-form textarea { height: 110px; }
+  .contact-card:hover { transform: translateY(-4px); background: rgba(255,255,255,.08); border-color: var(--lime); }
+  .contact-card--tg { border-color: rgba(41,182,246,.25); }
+  .contact-card--tg:hover { border-color: #29b6f6; background: rgba(41,182,246,.08); }
+  .cc-icon { font-size: 2rem; flex-shrink: 0; }
+  .cc-body { flex: 1; text-align: left; }
+  .cc-title { font-family: 'Unbounded', 'Impact', 'Arial Black', sans-serif; font-size: .9rem; font-weight: 700; color: var(--sun); margin-bottom: .2rem; }
+  .cc-val { font-size: .88rem; color: rgba(253,246,236,.6); }
+  .cc-arrow { font-size: 1.4rem; color: rgba(253,246,236,.3); transition: transform .2s, color .2s; }
+  .contact-card:hover .cc-arrow { transform: translateX(5px); color: var(--lime); }
+  .contact-card--tg:hover .cc-arrow { color: #29b6f6; }
 
   /* ── FOOTER ──────────────────────────────────────────── */
   footer {
@@ -750,40 +719,31 @@
 </div>
 
 <!-- CONTACTS -->
-<section id="contact">
-  <div class="contacts">
-    <div class="contact-info">
-      <h3>Свяжитесь<br>с нами</h3>
-      <p>Работаем в <strong>Краснодаре</strong>. Расскажите нам о своём ребёнке, дате и количестве гостей — подберём идеальный формат и рассчитаем стоимость.</p>
-      <div class="contact-links">
-        <a href="tel:+79898042924" class="contact-link">
-          <span class="cl-icon">📞</span> +7 (989) 804-29-24
-        </a>
-        <a href="https://t.me/+79898042924" class="contact-link">
-          <span class="cl-icon">✈️</span> Telegram
-        </a>
-        <a href="mailto:1499902@gmail.com" class="contact-link">
-          <span class="cl-icon">✉️</span> 1499902@gmail.com
-        </a>
-      </div>
+<section id="contact" style="padding: 6rem 8vw;">
+  <div style="text-align:center; max-width:600px; margin:0 auto;">
+    <div class="section-label" style="text-align:center;">Контакты</div>
+    <h2 class="section-title reveal" style="text-align:center;">Готовы обсудить<br>ваш праздник?</h2>
+    <p style="color:rgba(253,246,236,.65); line-height:1.7; margin-bottom:2.5rem;">
+      Работаем в <strong style="color:var(--cream)">Краснодаре</strong>. Напишите или позвоните — обсудим дату, формат и всё устроим!
+    </p>
+    <div style="display:flex; flex-direction:column; gap:1rem;">
+      <a href="tel:+79898042924" class="contact-card reveal">
+        <div class="cc-icon">📞</div>
+        <div class="cc-body">
+          <div class="cc-title">Позвонить</div>
+          <div class="cc-val">+7 (989) 804-29-24</div>
+        </div>
+        <div class="cc-arrow">→</div>
+      </a>
+      <a href="https://t.me/+79898042924" target="_blank" rel="noopener" class="contact-card contact-card--tg reveal">
+        <div class="cc-icon">✈️</div>
+        <div class="cc-body">
+          <div class="cc-title">Написать в Telegram</div>
+          <div class="cc-val">Откроется чат со мной</div>
+        </div>
+        <div class="cc-arrow">→</div>
+      </a>
     </div>
-
-    <form class="contact-form" onsubmit="handleSubmit(event)">
-      <input type="text" placeholder="Ваше имя *" required>
-      <input type="tel" placeholder="Телефон *" required>
-      <select>
-        <option value="" disabled selected>Формат праздника</option>
-        <option>Скалодром</option>
-        <option>Верёвочный парк</option>
-        <option>Выезд на скалы</option>
-        <option>Ещё не решил(а)</option>
-      </select>
-      <input type="number" placeholder="Количество детей" min="1">
-      <textarea placeholder="Дата, возраст именинника, пожелания..."></textarea>
-      <button type="submit" class="btn-primary" style="width:100%; text-align:center; font-size:.9rem; padding:1.1rem;">
-        Отправить заявку 🚀
-      </button>
-    </form>
   </div>
 </section>
 
@@ -794,7 +754,7 @@
   <p style="color:rgba(253,246,236,.25); font-size:.75rem;">Работаем с 2024 года</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Hero animations — trigger after load so fonts have time
   window.addEventListener('load', () => {
     document.body.classList.add('hero-anim');
@@ -818,9 +778,43 @@
     reveals.forEach(el => observer.observe(el));
   }
 
-  // Form submit
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = '✅ Заявка отправлена!';
-    btn.style.background = '
+  // Consent checkbox → enable/disable submit button
+  const consentCheck = document.getElementById('consentCheck');
+  const submitBtn = document.getElementById('submitBtn');
+  if (consentCheck && submitBtn) {
+    consentCheck.addEventListener('change', () => {
+      submitBtn.disabled = !consentCheck.checked;
+    });
+  }
+
+  // Form submission via Formspree (AJAX)
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.textContent = 'Отправляем...';
+      submitBtn.disabled = true;
+      try {
+        const res = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          contactForm.reset();
+          consentCheck.dispatchEvent(new Event('change'));
+          document.getElementById('formSuccess').style.display = 'block';
+          submitBtn.style.display = 'none';
+        } else {
+          submitBtn.textContent = '❌ Ошибка — попробуйте ещё раз';
+          submitBtn.disabled = false;
+        }
+      } catch {
+        submitBtn.textContent = '❌ Нет соединения';
+        submitBtn.disabled = false;
+      }
+    });
+  }
+</script>
+</body>
+</html>
